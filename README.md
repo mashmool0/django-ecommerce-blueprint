@@ -16,7 +16,7 @@ It’s opinionated around a clean domain model (catalog → cart/checkout → or
 
 ```bash
 # 1) get the code
-git clone <YOUR_REPO_URL> django-ecommerce-blueprint
+git clone https://github.com/mashmool0/django-ecommerce-blueprint django-ecommerce-blueprint
 cd django-ecommerce-blueprint
 
 # 2) env & deps (Python 3.11+ recommended)
