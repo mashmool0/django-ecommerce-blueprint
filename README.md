@@ -105,26 +105,6 @@ manage.py
 * SQLite (default) or Postgres (recommended for real projects)
 * A working virtualenv
 
-### Environment variables (`.env`)
-
-```env
-# Core
-SECRET_KEY=change-me
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
-CORS_ALLOWED_ORIGINS=http://localhost:3000
-
-# (Optional) Payments – example only, APIs disabled by default
-ZARRINPAL_MERCHANT_ID=test-merchant-id
-ZARRINPAL_BASE_URL=https://sandbox.zarinpal.com/pg/rest/WebGate/
-PAYMENTS_CALLBACK_BASE=http://127.0.0.1:8080
-ZARRINPAL_CALLBACK_PATH=/api/payments/zarrinpal/verify/
-```
-
-> Switch to Postgres by setting `DATABASE_URL` like
-> `postgres://user:pass@localhost:5432/shop`
-
 ---
 
 ## 🗃️ Seeders (Demo Data)
