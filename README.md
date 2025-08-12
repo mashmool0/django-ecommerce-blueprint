@@ -72,7 +72,7 @@ apps/
   messaging/  # Campaign, MessageOutbox, ShortLink, ShortLinkClick
   orders/     # OrderHeader/Line, Shipment, Returns, CouponRedemption
   payments/   # Payment model + Zarrinpal service (example API, not wired by default)
-danidor_backend/
+django-ecommerce-blueprint/
   settings/   # base.py, local.py, prod.py (env-driven)
   urls.py     # admin (+ optional docs); business APIs disabled by default
 manage.py
@@ -216,36 +216,6 @@ python manage.py runserver 127.0.0.1:8080
 
 ---
 
-## 🧪 Optional: Enable Example Payments API (Zarrinpal)
-
-When you want to test the gateway flow:
-
-1. Confirm service endpoints in `apps/payments/services/zarrinpal.py`.
-2. Add to **`danidor_backend/urls.py`**:
-
-   ```python
-   from django.urls import include, path
-   urlpatterns += [path("api/payments/", include("apps.payments.urls"))]
-   ```
-3. Set `ZARRINPAL_*` variables in `.env`.
-4. Create a `Checkout` (seeders do this), then:
-
-   * `POST /api/payments/zarrinpal/create/` → `payment_url, authority, payment_id`
-   * `GET /api/payments/zarrinpal/verify/?Authority=...&Status=OK` → creates **Order**, marks **Payment** captured.
-
-*(These endpoints are off by default so the starter stays models-focused.)*
-
----
-
-## 🔐 Security & Production Notes
-
-* Keep `SECRET_KEY` out of VCS.
-* Use **Postgres** for real deployments.
-* Enforce SSL/HSTS in `prod.py`, set `ALLOWED_HOSTS`.
-* Replace naive `order_number = Max()+1` with a **sequence/monotonic counter** to avoid race conditions.
-* Consider Celery for: OTP cleanup, nightly snapshots, SMS retries, stale **StockReservation** cleanup.
-
----
 
 ## 🛣️ Roadmap (what you can add next)
 
